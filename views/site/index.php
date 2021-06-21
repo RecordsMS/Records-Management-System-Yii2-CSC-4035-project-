@@ -7,46 +7,45 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
         <div class="col-lg-6">
             <?= \hail812\adminlte\widgets\Alert::widget([
                 'type' => 'success',
-                'body' => '<h3>Hallelujah!</h3>',
+                'body' => '<h3>Welcome!</h3>',
             ]) ?>
             <?= \hail812\adminlte\widgets\Callout::widget([
                 'type' => 'danger',
-                'head' => 'I am a danger callout!',
-                'body' => 'There is a problem that we need to fix. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.'
+                'head' => 'This is the Backend',
+                'body' => ''
             ]) ?>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Messages',
-                'number' => '1,410',
-                'icon' => 'far fa-envelope',
-            ]) ?>
+            <a href="index.php?r=students%2Fcreate"><?= \hail812\adminlte\widgets\InfoBox::widget([
+                'text' => 'Create Student',
+                'icon' => 'far fa-edit',
+            ]) ?></a>
         </div>
         <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Bookmarks',
-                'number' => '410',
+            <a href="index.php?r=students%2Findex"><?= \hail812\adminlte\widgets\InfoBox::widget([
+                'text' => 'Student List',
+                'number' => '1',
                  'theme' => 'success',
-                'icon' => 'far fa-flag',
-            ]) ?>
+                'icon' => 'fas fa-glasses',
+            ]) ?></a>
         </div>
-        <div class="col-md-4 col-sm-6 col-12">
+        <!--<div class="col-md-4 col-sm-6 col-12">
             <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Uploads',
+                /*'text' => 'Uploads',
                 'number' => '13,648',
                 'theme' => 'gradient-warning',
-                'icon' => 'far fa-copy',
+                'icon' => 'far fa-copy',*/
             ]) ?>
-        </div>
+        </div> -->
     </div>
 
-    <div class="row">
+    <!--<div class="row">
         <div class="col-md-4 col-sm-6 col-12">
             <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Bookmarks',
+                /*'text' => 'Bookmarks',
                 'number' => '41,410',
                 'icon' => 'far fa-bookmark',
                 'progress' => [
@@ -117,8 +116,8 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                 'text' => 'User Registrations',
                 'icon' => 'fas fa-user-plus',
                 'theme' => 'gradient-success',
-                'loadingStyle' => true
+                'loadingStyle' => true*/
             ]) ?>
-        </div>
+        </div>-->
     </div>
 </div>
