@@ -60,5 +60,8 @@ use yii\helpers\Html;
             <a href="register.html" class="text-center">Register a new membership</a>
         </p>
     </div>
+    <div>
+        If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+    </div>
     <!-- /.login-card-body -->
 </div>
