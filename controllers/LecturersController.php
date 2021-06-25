@@ -3,17 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Students;
-use app\models\StudentsSearch;
+use app\models\Lecturers;
+use app\models\LecturersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\ForbiddenHttpException;
 
 /**
- * StudentsController implements the CRUD actions for Students model.
+ * LecturersController implements the CRUD actions for Lecturers model.
  */
-class StudentsController extends Controller
+class LecturersController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -31,14 +31,14 @@ class StudentsController extends Controller
     }
 
     /**
-     * Lists all Students models.
+     * Lists all Lecturers models.
      * @return mixed
      */
     public function actionIndex()
     {
         if( Yii::$app->user->can( 'log-in' ))
         {
-            $searchModel = new StudentsSearch();
+            $searchModel = new LecturersSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
     
             return $this->render('index', [
@@ -52,14 +52,14 @@ class StudentsController extends Controller
     }
 
     /**
-     * Displays a single Students model.
+     * Displays a single Lecturers model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        if( Yii::$app->user->can( 'log-in' ))
+        if( Yii::$app->user->can( 'lecturer' ))
         {
             return $this->render('view', [
                 'model' => $this->findModel($id),
@@ -71,7 +71,7 @@ class StudentsController extends Controller
     }
 
     /**
-     * Creates a new Students model.
+     * Creates a new Lecturers model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -79,24 +79,23 @@ class StudentsController extends Controller
     {
         if( Yii::$app->user->can( 'admin' ))
         {
-            $model = new Students();
-
+            $model = new Lecturers();
+    
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->ID]);
             }
-
+    
             return $this->render('create', [
                 'model' => $model,
             ]);
-        } else
+        }else
         {
             throw new ForbiddenHttpException("You do not have the permissions to access this page!");
         }
-        
     }
 
     /**
-     * Updates an existing Students model.
+     * Updates an existing Lecturers model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -104,9 +103,10 @@ class StudentsController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(Yii::$app->user->can( 'lecturer' )){
+        if( Yii::$app->user->can( 'lecturer' ))
+        {
             $model = $this->findModel($id);
-
+    
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->ID]);
             }
@@ -118,11 +118,10 @@ class StudentsController extends Controller
         {
             throw new ForbiddenHttpException("You do not have the permissions to access this page!");
         }
-        
     }
 
     /**
-     * Deletes an existing Students model.
+     * Deletes an existing Lecturers model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -130,28 +129,27 @@ class StudentsController extends Controller
      */
     public function actionDelete($id)
     {
-        if(Yii::$app->user->can( 'admin' ))
+        if( Yii::$app->user->can( 'admin' ))
         {
             $this->findModel($id)->delete();
-        
+    
             return $this->redirect(['index']);
-        } else
+        }else
         {
             throw new ForbiddenHttpException("You do not have the permissions to access this page!");
         }
-        
     }
 
     /**
-     * Finds the Students model based on its primary key value.
+     * Finds the Lecturers model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Students the loaded model
+     * @return Lecturers the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Students::findOne($id)) !== null) {
+        if (($model = Lecturers::findOne($id)) !== null) {
             return $model;
         }
 

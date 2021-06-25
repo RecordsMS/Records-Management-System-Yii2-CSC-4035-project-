@@ -13,19 +13,20 @@ use yii\helpers\Html;
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?=\yii\helpers\Url::home()?>" class="nav-link">Home</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        <!--<li class="nav-item d-none d-sm-inline-block">
             <a href="index.php?r=students%2Fcreate" class="nav-link">Registration</a>
-        </li>
+        </li>-->
         <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Statistics</a>
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Pages</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                <li><a href="index.php?r=students%2Findex" class="dropdown-item">Students </a></li>
-                <li><a href="#" class="dropdown-item">Teachers</a></li>
+                <li><a href="index.php?r=students" class="dropdown-item">Students</a></li>
+                <li><a href="index.php?r=lecturers" class="dropdown-item">Lecturers</a></li>
+                <li><a href="index.php?r=courses" class="dropdown-item">Courses</a></li>
                 <li><?= Html::a('Sign out', ['site/logout'], ['data-method' => 'post', 'class' => 'dropdown-item']) ?></li>
 
                 <li class="dropdown-divider"></li>
 
-                <!-- Level two dropdown-->
+                <!-- Level two dropdown
                 <li class="dropdown-submenu dropdown-hover">
                     <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Other Stats</a>
                     <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
@@ -33,7 +34,7 @@ use yii\helpers\Html;
                             <a tabindex="-1" href="#" class="dropdown-item">Results</a>
                         </li>
 
-                        <!-- Level three dropdown
+                        Level three dropdown
                         <li class="dropdown-submenu">
                             <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
                             <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
@@ -41,12 +42,12 @@ use yii\helpers\Html;
                                 <li><a href="#" class="dropdown-item">3rd level</a></li>
                             </ul>
                         </li>
-                        End Level three -->
+                        End Level three 
 
                         <li><a href="#" class="dropdown-item">Research</a></li>
                         <li><a href="#" class="dropdown-item">Accomodation</a></li>
                     </ul>
-                </li>
+                </li>-->
                 <!-- End Level two -->
             </ul>
         </li>
@@ -174,18 +175,18 @@ use yii\helpers\Html;
             </div>
         </li>-->
         <li class="nav-item">
-            <?= Html::a('<i class="fas fa-sign-out-alt"></i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
         <li class="nav-item">
+            <?= Html::a('<i class="fas fa-sign-out-alt"> logout</i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
+        </li>
+        <!--<li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                 <i class="fas fa-th-large"></i>
             </a>
-        </li>
+        </li>-->
     </ul>
 </nav>
 <!-- /.navbar -->

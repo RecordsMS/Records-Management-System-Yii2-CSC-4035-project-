@@ -7,15 +7,10 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
+        <!-- Sidebar user panel (optional) 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="..\web\img\IMG_0011.JPG" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">Ezra Gonyuie</a>
-            </div>
-        </div>
+            = \Yii::$app->user->identity->username ?>
+        </div>-->
 
         <!-- SidebarSearch Form -->
         <!-- href be escaped -->
@@ -38,19 +33,20 @@
                     [
                         'label' => 'Home',
                         'icon' => 'tachometer-alt',
-                        'badge' => '<span class="right badge badge-info">2</span>',
-                        'url' => 'site/index'
+                        'url' => 'site/index', 
+                        'visible' => Yii::$app->user->can( 'log-in' )
                     ],
-                    ['label' => 'Student', 'icon' => 'th','url' => ['students/index'], 'badge' => '<span class="right badge badge-danger">New</span>'],
-                    ['label' => 'Yii2 PROVIDED', 'header' => true],
+                    ['label' => 'LOGIN FEATURES', 'header' => true],
                     ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
-                    ['label' => 'Signup', 'url' => ['/site/signup'], 'icon' => 'sign-out-alt'],
-                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
-                    ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
-                    ['label' => 'LABELS', 'header' => true],
-                    ['label' => 'Important', 'iconStyle' => 'far', 'iconClassAdded' => 'text-danger'],
-                    ['label' => 'Warning', 'iconClass' => 'nav-icon far fa-circle text-warning'],
-                    ['label' => 'Informational', 'iconStyle' => 'far', 'iconClassAdded' => 'text-info'],
+                    ['label' => 'Signup', 'url' => ['/site/signup'], 'icon' => 'sign-out-alt', 'visible' => Yii::$app->user->isGuest],
+                    ['label' => 'Signout', 'url' => ['/site/logout'], 'icon' => 'sign-out-alt', 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'PAGES', 'header' => true, 'visible' => Yii::$app->user->can( 'log-in' )],
+                    ['label' => 'Student', 'icon' => 'fas fa-user-graduate','url' => ['students/index'], 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'Courses', 'icon' => 'fas fa-book-open','url' => ['courses/index'], 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'Lecturers', 'icon' => 'fas fa-chalkboard-teacher','url' => ['lecturers/index'], 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'YII PROVIDED', 'header' => true, 'visible' => Yii::$app->user->can( 'admin' )],
+                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank', 'visible' => Yii::$app->user->can( 'admin' )],
+                    ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank', 'visible' => Yii::$app->user->can( 'admin' )],
                 ],
             ]);
             ?>
