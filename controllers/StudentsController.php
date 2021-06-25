@@ -8,6 +8,7 @@ use app\models\StudentsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
  * StudentsController implements the CRUD actions for Students model.
@@ -64,15 +65,22 @@ class StudentsController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Students();
+        if( Yii::$app->user->can( 'admin' ))
+        {
+            $model = new Students();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->ID]);
+            }
+
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        } else
+        {
+            throw new ForbiddenHttpException("You do not have the permissions to access this page!");
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        
     }
 
     /**
@@ -84,15 +92,21 @@ class StudentsController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if(Yii::$app->user->can( 'admin' )){
+            $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID]);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->ID]);
+            }
+    
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }else
+        {
+            throw new ForbiddenHttpException("You do not have the permissions to access this page!");
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        
     }
 
     /**
@@ -104,9 +118,16 @@ class StudentsController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        if(Yii::$app->user->can( 'admin' ))
+        {
+            $this->findModel($id)->delete();
+        
+            return $this->redirect(['index']);
+        } else
+        {
+            throw new ForbiddenHttpException("You do not have the permissions to access this page!");
+        }
+        
     }
 
     /**
