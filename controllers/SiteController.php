@@ -75,7 +75,7 @@ class SiteController extends Controller
             return $this->render('index');
         }else
         {
-            throw new ForbiddenHttpException("You do not have the permissions to access this page!");
+            return $this->actionLogin();
         }
         
     }

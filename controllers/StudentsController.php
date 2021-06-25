@@ -92,7 +92,7 @@ class StudentsController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(Yii::$app->user->can( 'admin' )){
+        if(Yii::$app->user->can( 'lecturer' )){
             $model = $this->findModel($id);
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
