@@ -7,7 +7,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
         <div class="col-lg-6">
             <?= \hail812\adminlte\widgets\Callout::widget([
                 'type' => 'success',
-                'head' => 'Welcome!',
+                'head' => 'Welcome ' . Yii::$app->user->identity->username . '! ',
             ]) ?>
         </div>
     </div>

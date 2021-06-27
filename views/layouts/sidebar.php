@@ -7,10 +7,24 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel (optional) 
+        <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            = \Yii::$app->user->identity->username ?>
-        </div>-->
+            <?php
+                if(Yii::$app->user->isGuest){
+                    echo \hail812\adminlte\widgets\Menu::widget([
+                        'items' => [
+                            ['label' => 'Login', 'icon' => 'fas fa-walking', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+                        ],
+                    ]);
+                } else{
+                    echo \hail812\adminlte\widgets\Menu::widget([
+                        'items' => [
+                            ['label' => 'Hello ' . Yii::$app->user->identity->username . ' ', 'icon' => 'far fa-user-circle' , 'visible' => Yii::$app->user->can( 'log-in' )],
+                        ],
+                    ]);
+                }
+            ?>
+        </div>
 
         <!-- SidebarSearch Form -->
         <!-- href be escaped -->
@@ -32,12 +46,12 @@
                 'items' => [
                     [
                         'label' => 'Home',
-                        'icon' => 'tachometer-alt',
+                        'icon' => 'fas fa-igloo',
                         'url' => 'site/index', 
                         'visible' => Yii::$app->user->can( 'log-in' )
                     ],
-                    ['label' => 'LOGIN FEATURES', 'header' => true],
-                    ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
+                    /*['label' => 'LOGIN FEATURES', 'header' => true],*/
+                    /*['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],*/
                     ['label' => 'Signup', 'url' => ['/site/signup'], 'icon' => 'sign-out-alt', 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Signout', 'url' => ['/site/logout'], 'icon' => 'sign-out-alt', 'visible' => !Yii::$app->user->isGuest],
                     ['label' => 'PAGES', 'header' => true, 'visible' => Yii::$app->user->can( 'log-in' )],

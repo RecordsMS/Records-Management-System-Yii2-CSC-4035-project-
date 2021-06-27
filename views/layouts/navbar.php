@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 
+
 ?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -14,7 +15,7 @@ use yii\helpers\Html;
             <a href="<?=\yii\helpers\Url::home()?>" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index.php?r=about" class="nav-link">About</a>
+            <a href="index.php?r=site/about" class="nav-link">About</a>
         </li>
         <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Pages</a>
@@ -157,7 +158,7 @@ use yii\helpers\Html;
             </a>
         </li>
         <li class="nav-item">
-            <?= Html::a('<i class="fas fa-sign-out-alt"> logout</i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
+            <?= Html::a('<i class="fas fa-sign-out-alt"> logout</i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link'])?>
         </li>
         <!--<li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
