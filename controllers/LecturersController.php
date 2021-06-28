@@ -36,7 +36,7 @@ class LecturersController extends Controller
      */
     public function actionIndex()
     {
-        if( Yii::$app->user->can( 'log-in' ))
+        if( Yii::$app->user->can( 'lecturer' ))
         {
             $searchModel = new LecturersSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);

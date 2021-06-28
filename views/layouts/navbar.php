@@ -16,18 +16,22 @@ use yii\helpers\Html;
         <li class="nav-item d-none d-sm-inline-block">
             <a href="index.php?r=site/about" class="nav-link">About</a>
         </li>
-        <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Pages</a>
-            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                <li><a href="index.php?r=students" class="dropdown-item">Students</a></li>
-                <li><a href="index.php?r=lecturers" class="dropdown-item">Lecturers</a></li>
-                <li><a href="index.php?r=courses" class="dropdown-item">Courses</a></li>
-                <li><?= Html::a('Sign out', ['site/logout'], ['data-method' => 'post', 'class' => 'dropdown-item']) ?></li>
+        <?php if(!Yii::$app->user->isGuest): ?>
+            <li class="nav-item dropdown">
+                <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Pages</a>
+                <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                    <li><a href="index.php?r=students" class="dropdown-item">Students</a></li>
+                    <?php if(Yii::$app->user->can( 'lecturer')): ?>
+                        <li><a href="index.php?r=lecturers" class="dropdown-item">Lecturers</a></li>
+                    <?php endif; ?>
+                    <li><a href="index.php?r=courses" class="dropdown-item">Courses</a></li>
+                    <li><?= Html::a('Sign out', ['site/logout'], ['data-method' => 'post', 'class' => 'dropdown-item']) ?></li>
 
-                <li class="dropdown-divider"></li>
+                    <li class="dropdown-divider"></li>
 
-            </ul>
-        </li>
+                </ul>
+            </li>
+        <?php endif; ?>
     </ul>
 
     <!-- SEARCH FORM -->

@@ -32,13 +32,15 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
             </a>
         </div>
         <div class="col-md-4 col-sm-6 col-12">
-            <a href="index.php?r=lecturers">
-                <?= \hail812\adminlte\widgets\InfoBox::widget([
-                    'text' => 'Lecturers',
-                    'theme' => 'gradient-warning',
-                    'icon' => 'fas fa-chalkboard-teacher',
-                ]) ?>
-            </a>
+            <?php if(Yii::$app->user->can( 'lecturer')): ?>
+                <a href="index.php?r=lecturers">
+                    <?= \hail812\adminlte\widgets\InfoBox::widget([
+                        'text' => 'Lecturers',
+                        'theme' => 'gradient-warning',
+                        'icon' => 'fas fa-chalkboard-teacher',
+                    ]) ?>
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 

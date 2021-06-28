@@ -57,10 +57,10 @@
                     ['label' => 'PAGES', 'header' => true, 'visible' => Yii::$app->user->can( 'log-in' )],
                     ['label' => 'Student', 'icon' => 'fas fa-user-graduate','url' => ['students/index'], 'visible' => !Yii::$app->user->isGuest],
                     ['label' => 'Courses', 'icon' => 'fas fa-book-open','url' => ['courses/index'], 'visible' => !Yii::$app->user->isGuest],
-                    ['label' => 'Lecturers', 'icon' => 'fas fa-chalkboard-teacher','url' => ['lecturers/index'], 'visible' => !Yii::$app->user->isGuest],
-                    ['label' => 'YII PROVIDED', 'header' => true, 'visible' => Yii::$app->user->can( 'admin' )],
-                    ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank', 'visible' => Yii::$app->user->can( 'admin' )],
-                    ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank', 'visible' => Yii::$app->user->can( 'admin' )],
+                    ['label' => 'Lecturers', 'icon' => 'fas fa-chalkboard-teacher','url' => ['lecturers/index'], 'visible' => Yii::$app->user->can( 'lecturer')],
+                    //['label' => 'YII PROVIDED', 'header' => true, 'visible' => Yii::$app->user->can( 'admin' )],
+                    //['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank', 'visible' => Yii::$app->user->can( 'admin' )],
+                    //['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank', 'visible' => Yii::$app->user->can( 'admin' )],
                 ],
             ]);
             ?>
