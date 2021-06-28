@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use borales\extensions\phoneInput\PhoneInputValidator;
+use borales\extensions\phoneInput\PhoneInputBehavior;
 
 /**
  * This is the model class for table "students".
@@ -19,6 +21,7 @@ use Yii;
  */
 class Students extends \yii\db\ActiveRecord
 {
+    public $phone;
     /**
      * {@inheritdoc}
      */
@@ -35,6 +38,7 @@ class Students extends \yii\db\ActiveRecord
         return [
             [['Name', 'Gender', 'Date_of_birth', 'School', 'Program', 'Major', 'Year_of_study'], 'required'],
             [['Gender', 'Phone_Number'], 'string'],
+            [['phone'], PhoneInputValidator::className(), 'region' => ['ZM', 'UA']],
             [['Date_of_birth'], 'safe'],
             [['Year_of_study'], 'integer'],
             [['Name'], 'string', 'max' => 30],
@@ -57,6 +61,17 @@ class Students extends \yii\db\ActiveRecord
             'Program' => 'Program',
             'Major' => 'Major',
             'Year_of_study' => 'Year Of Study',
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            'phoneInput' => PhoneInputBehavior::className(),
+            [
+                'class' => PhoneInputBehavior::className(),
+                'countryCodeAttribute' => 'countryCode',
+            ],
         ];
     }
 }

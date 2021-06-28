@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 
-
 ?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -158,7 +157,9 @@ use yii\helpers\Html;
             </a>
         </li>
         <li class="nav-item">
-            <?= Html::a('<i class="fas fa-sign-out-alt"> logout</i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link'])?>
+            <?php if(!Yii::$app->user->isGuest): ?>
+                <?= Html::a('<i class="fas fa-sign-out-alt"> log out</i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link'])?>
+            <?php endif; ?>
         </li>
         <!--<li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">

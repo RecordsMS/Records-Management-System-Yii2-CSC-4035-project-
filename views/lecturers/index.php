@@ -12,11 +12,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lecturers-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Lecturers', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <?php if(Yii::$app->user->can( 'admin')): ?>
+        <p>
+            <?= Html::a('Create Lecturers', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+    <?php endif; ?>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -32,7 +33,26 @@ $this->params['breadcrumbs'][] = $this->title;
             'Type',
             'Course',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn', 
+                        'visibleButtons' => [
+                            'view' => function ($model) {
+                                if( Yii::$app->user->can( 'lecturer' )){
+                                    return true;
+                                }
+                            },
+                            'update' => function ($model) {
+                                if(Yii::$app->user->can( 'lecturer' )){
+                                    return true;
+                                }
+                            },
+                            'delete' => function ($model) {
+                                if(Yii::$app->user->can( 'admin' ))
+                                {
+                                    return true;
+                                }
+                            },
+                        ]
+                    ],
         ],
     ]); ?>
 

@@ -13,17 +13,19 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="courses-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->CourseId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->CourseId], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?php if(Yii::$app->user->can( 'admin')): ?>
+            <?= Html::a('Update', ['update', 'id' => $model->CourseId], ['class' => 'btn btn-primary']) ?>
+        <?php endif; ?>
+        <?php if(Yii::$app->user->can( 'admin')): ?>
+            <?= Html::a('Delete', ['delete', 'id' => $model->CourseId], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => 'Are you sure you want to delete this item?',
+                    'method' => 'post',
+                ],
+            ]) ?>
+        <?php endif; ?>
     </p>
 
     <?= DetailView::widget([

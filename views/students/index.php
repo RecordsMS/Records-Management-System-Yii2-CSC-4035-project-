@@ -12,11 +12,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="students-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Students', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    
+    <?php if(Yii::$app->user->can( 'admin')): ?>
+        <p>
+            <?= Html::a('Create Students', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+    <?php endif; ?>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -29,14 +30,33 @@ $this->params['breadcrumbs'][] = $this->title;
             'ID',
             'Name',
             'Gender',
-            'Date_of_birth',
-            'Phone_Number:ntext',
-            'School',
+            //'Date_of_birth',
+            //'Phone_Number:ntext',
+            //'School',
             'Program',
             'Major',
             'Year_of_study',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn', 
+                        'visibleButtons' => [
+                            'view' => function ($model) {
+                                if( Yii::$app->user->can( 'log-in' )){
+                                    return true;
+                                }
+                            },
+                            'update' => function ($model) {
+                                if(Yii::$app->user->can( 'lecturer' )){
+                                    return true;
+                                }
+                            },
+                            'delete' => function ($model) {
+                                if(Yii::$app->user->can( 'admin' ))
+                                {
+                                    return true;
+                                }
+                            },
+                        ]
+                    ],
         ],
     ]); ?>
 

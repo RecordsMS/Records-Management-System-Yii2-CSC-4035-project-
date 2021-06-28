@@ -24,8 +24,8 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
         <div class="col-md-4 col-sm-6 col-12">
             <a href="index.php?r=students%2Findex">
                 <?= \hail812\adminlte\widgets\InfoBox::widget([
-                    'text' => 'Student',
-                    'number' => '1',
+                    'text' => 'Students',
+                    //'number' => '1',
                     'theme' => 'success',
                     'icon' => 'fas fa-user-graduate',
                 ]) ?>
