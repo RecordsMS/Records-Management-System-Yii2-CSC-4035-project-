@@ -52,8 +52,8 @@
                     ],
                     /*['label' => 'LOGIN FEATURES', 'header' => true],*/
                     /*['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],*/
-                    ['label' => 'Sign up', 'url' => ['/site/signup'], 'icon' => 'sign-out-alt', 'visible' => Yii::$app->user->isGuest],
-                    ['label' => 'Sign out', 'url' => ['/site/logout'], 'icon' => 'sign-out-alt', 'visible' => !Yii::$app->user->isGuest],
+                    //['label' => 'Sign up', 'url' => ['/site/signup'], 'icon' => 'sign-out-alt', 'visible' => Yii::$app->user->isGuest],
+                    //['label' => 'Sign out', 'url' => ['/site/logout'], 'icon' => 'sign-out-alt', 'visible' => !Yii::$app->user->isGuest],
                     ['label' => 'PAGES', 'header' => true, 'visible' => Yii::$app->user->can( 'log-in' )],
                     ['label' => 'Student', 'icon' => 'fas fa-user-graduate','url' => ['students/index'], 'visible' => !Yii::$app->user->isGuest],
                     ['label' => 'Courses', 'icon' => 'fas fa-book-open','url' => ['courses/index'], 'visible' => !Yii::$app->user->isGuest],
